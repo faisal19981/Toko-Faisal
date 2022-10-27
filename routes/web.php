@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomepageController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,10 @@ Route::get('/kategori', [HomepageController::class, 'kategori']);
 Route::get('/kontak', [HomepageController::class, 'kontak']);
 Route::get('/about', [HomepageController::class, 'about']);
 Route::get('/login', [HomepageController::class, 'login']);
+
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/kategori', [DashboardController::class, 'kategori']);
+    Route::get('/kontak', [DashboardController::class, 'kontak']);
+    Route::get('/about', [DashboardController::class, 'about']);
+});
